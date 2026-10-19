@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Unit 4 – My school bag</title>
+<style>
+:root{--bg:#fffbea;--card:#fff;--ink:#2b2b3a;--acc:#2f6fed;--acc2:#f4c400;--ok:#1f9d55;--bad:#d64545;--line:#e6dfb8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1d28;--card:#2a2a38;--ink:#f1f1f5;--acc:#7ea6ff;--acc2:#f4c400;--line:#444458}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Arial,sans-serif;line-height:1.45}
+main{max-width:900px;margin:0 auto;padding:16px}
+header{background:var(--acc2);color:#222;border-radius:18px;padding:18px 22px;margin-bottom:18px}
+header h1{margin:0;font-size:1.7rem}header p{margin:4px 0 0}
+section{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin-bottom:18px}
+h2{margin:0 0 4px;font-size:1.25rem}
+h2 span{background:var(--acc);color:#fff;border-radius:50%;display:inline-block;width:30px;height:30px;text-align:center;line-height:30px;margin-right:8px;font-size:1rem}
+.task{margin:0 0 12px;opacity:.8}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.fc{border:2px solid var(--line);border-radius:14px;text-align:center;padding:10px 6px}
+.fc .e{font-size:2.6rem}.fc b{display:block;font-size:1.05rem}.fc i{font-size:.8rem;opacity:.75}.fc u{display:block;text-decoration:none;font-size:.85rem;color:var(--acc)}
+h3{margin:14px 0 6px;font-size:1rem}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.item{display:flex;align-items:center;gap:8px;border:2px solid var(--line);border-radius:14px;padding:8px 10px;min-width:210px;flex:1}
+.item .e{font-size:2.2rem}
+select,input{font:inherit;padding:6px 8px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);max-width:100%}
+input{width:140px}
+.ok{border-color:var(--ok)!important;background:rgba(31,157,85,.12)!important}
+.bad{border-color:var(--bad)!important;background:rgba(214,69,69,.12)!important}
+button{font:inherit;font-weight:600;background:var(--acc);color:#fff;border:0;border-radius:12px;padding:8px 16px;cursor:pointer;margin:12px 8px 0 0}
+button.g{background:transparent;color:var(--acc);border:2px solid var(--acc)}
+.score{display:inline-block;font-weight:700;margin-left:6px}
+.bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.bar span{background:var(--acc2);color:#222;border-radius:10px;padding:4px 10px;font-weight:600}
+.say{background:rgba(47,111,237,.1);border-radius:12px;padding:10px 14px}
+.say li{margin:4px 0}
+@media print{button{display:none}body{background:#fff;color:#000}section{break-inside:avoid}}
+</style></head><body><main>
+<header><h1>🎒 Unit 4 · Things in my school bag</h1><p>Урок для 5 класу · Prepare 5 · Vocabulary List</p></header>
+
+<section><h2><span>0</span>Warm-up · Розминка</h2>
+<div class="say"><b>Say it:</b>
+<ul><li>What's in your bag? – I've got a …</li><li>What's in your hand? – It's a … (покажи речі зі шкільної сумки!)</li></ul></div></section>
+
+<section><h2><span>1</span>Look &amp; learn · Вивчаємо слова</h2>
+<p class="task">Прочитай слова вголос 2 рази. Закрий переклад рукою й згадай його.</p>
+<h3>👜 Things in my school bag</h3><div class="cards" id="c1"></div>
+<h3>🎨 Adjectives: things</h3><div class="cards" id="c2"></div></section>
+
+<section><h2><span>2</span>Match · Що на картинці?</h2>
+<p class="task">Обери правильне слово до кожної картинки.</p>
+<div class="row" id="t2"></div>
+<button onclick="chk('t2')">Перевірити ✔</button><button class="g" onclick="rst('t2')">Спочатку ↺</button><span class="score" id="s_t2"></span></section>
+
+<section><h2><span>3</span>Spell it · Впиши слово</h2>
+<p class="task">Подивись на картинку й напиши слово англійською.</p>
+<div class="row" id="t3"></div>
+<button onclick="chk('t3')">Перевірити ✔</button><button class="g" onclick="rst('t3')">Спочатку ↺</button><span class="score" id="s_t3"></span></section>
+
+<section><h2><span>4</span>Opposites · Протилежності</h2>
+<p class="task">Підбери слово з протилежним значенням.</p>
+<div class="row" id="t4"></div>
+<button onclick="chk('t4')">Перевірити ✔</button><button class="g" onclick="rst('t4')">Спочатку ↺</button><span class="score" id="s_t4"></span></section>
+
+<section><h2><span>5</span>Describe it · Опиши річ</h2>
+<p class="task">Обери прикметники та склади речення: <i>This is a ___ ___ .</i> (Пам’ятай: прикметник стоїть ПЕРЕД іменником!)</p>
+<div class="row" id="t5"></div>
+<button onclick="chk('t5')">Перевірити ✔</button><button class="g" onclick="rst('t5')">Спочатку ↺</button><span class="score" id="s_t5"></span></section>
+
+<section><h2><span>6</span>Grammar · have got / has got</h2>
+<div class="say"><b>Запам’ятай:</b>
+<ul><li>✅ <b>I / You / We / They</b> + <b>have got</b> → <i>I have got a hat.</i></li>
+<li>✅ <b>He / She / It</b> (і один предмет чи особа) + <b>has got</b> → <i>She has got a scarf.</i></li>
+<li>❌ заперечення: <b>haven't got</b> / <b>hasn't got</b></li>
+<li>❓ питання: <i>Has Tom got a hat? – Yes, he has. / No, he hasn't.</i></li></ul></div>
+<p class="task" style="margin-top:12px">Обери <b>have</b> або <b>has</b>.</p>
+<div class="row" id="t6"></div>
+<button onclick="chk('t6')">Перевірити ✔</button><button class="g" onclick="rst('t6')">Спочатку ↺</button><span class="score" id="s_t6"></span></section>
+
+<section><h2><span>7</span>Tom's bag · Сумка Тома</h2>
+<p class="task">Подивись, що є в сумці Тома, і вибери <b>has got</b> або <b>hasn't got</b>.</p>
+<div class="fc" style="margin-bottom:12px"><b>🎒 Tom's bag</b><div class="e">🍌 ⚽ 🔑 🧤</div></div>
+<div class="row" id="t7"></div>
+<button onclick="chk('t7')">Перевірити ✔</button><button class="g" onclick="rst('t7')">Спочатку ↺</button><span class="score" id="s_t7"></span></section>
+
+<section><h2><span>8</span>Questions &amp; answers · Питання й відповіді</h2>
+<p class="task">Знову дивимось на сумку Тома (🍌 ⚽ 🔑 🧤). Дай коротку відповідь.</p>
+<div class="row" id="t8"></div>
+<button onclick="chk('t8')">Перевірити ✔</button><button class="g" onclick="rst('t8')">Спочатку ↺</button><span class="score" id="s_t8"></span></section>
+
+<section><h2><span>9</span>My bag · Моя сумка (speaking &amp; writing)</h2>
+<p class="task">Склади 3 речення про свою шкільну сумку. Прочитай їх учителю.</p>
+<div class="say"><ul>
+<li>I've got a <b>big blue</b> bag.</li>
+<li>In my bag there is a <b>new</b> ______ and a <b>small</b> ______ .</li>
+<li>My ______ is <b>clean / dirty / old</b>.</li></ul></div>
+<p><textarea rows="4" style="width:100%;font:inherit;padding:8px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink)" placeholder="Write here…"></textarea></p>
+<div class="bar"><span>🏠 Homework: learn all words from Unit 4</span></div></section>
+</main>
+<script>
+const N=[["banana","🍌","/bəˈnɑːnə/","банан"],["chocolate","🍫","/ˈtʃɒklət/","шоколад"],["coat","🧥","/kəʊt/","пальто"],["football","⚽","/ˈfʊtbɔːl/","футбольний м’яч"],["gloves","🧤","/ɡlʌvz/","рукавички"],["hat","🧢","/hæt/","шапка"],["keys","🔑","/kiːz/","ключі"],["scarf","🧣","/skɑːf/","шарф"],["wallet","👛","/ˈwɒlɪt/","гаманець"],["water bottle","🥤","/ˈwɔːtə ˈbɒtl/","пляшка для води"]];
+const A=[["big","🐘","/bɪɡ/","великий"],["blue","🔵","/bluː/","синій"],["clean","✨","/kliːn/","чистий"],["dark","🌑","/dɑːk/","темний"],["dirty","🐖","/ˈdɜːti/","брудний"],["light blue","🩵","/laɪt bluː/","блакитний"],["long","🐍","/lɒŋ/","довгий"],["new","🆕","/njuː/","новий"],["old","📜","/əʊld/","старий"],["short","📏","/ʃɔːt/","короткий"],["small","🐭","/smɔːl/","малий"]];
+const $=id=>document.getElementById(id);
+const sh=a=>[...a].sort(()=>Math.random()-.5);
+const card=w=>`<div class="fc"><div class="e">${w[1]}</div><b>${w[0]}</b><i>${w[2]}</i><u>${w[3]}</u></div>`;
+$('c1').innerHTML=N.map(card).join('');$('c2').innerHTML=A.map(card).join('');
+const opts=(list,keep)=>'<option value="">…</option>'+sh(list).map(x=>`<option>${x}</option>`).join('');
+// T2
+function b2(){$('t2').innerHTML=sh(N).map(w=>`<div class="item"><span class="e">${w[1]}</span><select data-a="${w[0]}">${opts(N.map(x=>x[0]))}</select></div>`).join('')}
+// T3
+function b3(){$('t3').innerHTML=sh(A.slice(0,8).concat(N.slice(0,3))).slice(0,10).map(w=>`<div class="item"><span class="e">${w[1]}</span><input data-a="${w[0]}" autocomplete="off" placeholder="${w[0][0]}…"></div>`).join('')}
+// T4
+const O=[["big","small"],["clean","dirty"],["new","old"],["long","short"],["dark","light blue"]];
+const adjW=O.flatMap(p=>p);
+function b4(){$('t4').innerHTML=sh(O.flatMap(p=>[p,[p[1],p[0]]]).slice(0,10)).slice(0,8).map(p=>`<div class="item"><b>${p[0]}</b> ↔ <select data-a="${p[1]}">${opts(adjW)}</select></div>`).join('')}
+// T5
+const D=[["🧣","scarf","long","blue"],["🧥","coat","new","dark"],["🧢","hat","old","dirty"],["⚽","football","clean","small"],["🧤","gloves","light blue","short"]];
+const adjAll=A.map(x=>x[0]);
+function b5(){$('t5').innerHTML=D.map(d=>`<div class="item" style="min-width:100%"><span class="e">${d[0]}</span><span>This is a</span><select data-a="${d[2]}|${d[3]}">${opts(adjAll)}</select><select data-b="1">${opts(adjAll)}</select><b>${d[1]}</b></div>`).join('')}
+const H=[["I","🧢","a new hat","have"],["She","🧣","a long scarf","has"],["We","⚽","a football","have"],["My brother","🔑","two keys","has"],["They","🍫","chocolate","have"],["The teacher","🧥","a dark coat","has"],["You","🧤","small gloves","have"],["Ann and Tom","🍌","bananas","have"]];
+function b6(){$('t6').innerHTML=H.map(h=>`<div class="item"><span class="e">${h[1]}</span><span>${h[0]}</span><select data-a="${h[3]}">${opts(['have','has'])}</select><span>got ${h[2]}.</span></div>`).join('')}
+const T=[["a banana","🍌","has got"],["a hat","🧢","hasn't got"],["a football","⚽","has got"],["a scarf","🧣","hasn't got"],["keys","🔑","has got"],["chocolate","🍫","hasn't got"],["gloves","🧤","has got"],["a wallet","👛","hasn't got"]];
+function b7(){$('t7').innerHTML=T.map(t=>`<div class="item"><span class="e">${t[1]}</span><span>Tom</span><select data-a="${t[2]}">${opts(['has got',"hasn't got"])}</select><span>${t[0]}.</span></div>`).join('')}
+const Q=[["Has Tom got a banana?","🍌","yes, he has."],["Has Tom got a hat?","🧢","no, he hasn't."],["Has Tom got keys?","🔑","yes, he has."],["Has Tom got a scarf?","🧣","no, he hasn't."],["Has Tom got gloves?","🧤","yes, he has."],["Has Tom got chocolate?","🍫","no, he hasn't."]];
+function b8(){$('t8').innerHTML=Q.map(q=>`<div class="item"><span class="e">${q[1]}</span><span>${q[0]}</span><select data-a="${q[2]}">${opts(['Yes, he has.',"No, he hasn't."])}</select></div>`).join('')}
+b2();b3();b4();b5();b6();b7();b8();
+function chk(id){let ok=0,tot=0;
+ document.querySelectorAll('#'+id+' .item').forEach(it=>{
+  const f=it.querySelectorAll('select,input');tot++;
+  let good;
+  if(id==='t5'){const a=f[0].value,b=f[1].value;const [x,y]=f[0].dataset.a.split('|');good=a&&b&&a!==b&&[x,y].includes(a)&&[x,y].includes(b)}
+  else{good=f[0].value.trim().toLowerCase()===f[0].dataset.a}
+  it.classList.toggle('ok',!!good);it.classList.toggle('bad',!good);if(good)ok++});
+ $('s_'+id).textContent=`${ok} / ${tot} ${ok===tot?'🎉 Well done!':'💪 Try again!'}`}
+function rst(id){({t2:b2,t3:b3,t4:b4,t5:b5,t6:b6,t7:b7,t8:b8})[id]();$('s_'+id).textContent=''}
+</script></body></html>
